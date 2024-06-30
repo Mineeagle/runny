@@ -16,9 +16,9 @@ If would like to see an addition to these, please create an issue on GitHub or f
 In order to install runny - make sure Micro is installed in the first place - simply clone this repository and run `make`:
 
 ```bash
-$ git clone https://github.com/Mineeagle/runny.git
-$ cd runny
-$ make
+git clone https://github.com/Mineeagle/runny.git
+cd runny
+make
 ```
 
 # Usage
@@ -83,6 +83,13 @@ You can change some options for runny, or change the keybinding to execute a fil
 | Execute the current file without arguments | `lua:runny.gorun`         | Ctrl-F5 |
 
 # Roadmap
+
+- Support more programming languages
+- Implement `> help runny` command
+- Do some more testing
+- Key binding for the `runny` command
+
+(This roadmap is in no particular order.)
 
 # Changelog
 
