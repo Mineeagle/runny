@@ -64,7 +64,7 @@ Currently, the following programming languages are supported:
 - Lua
 - Python
 
-If would like to see an addition to these, please create an issue on GitHub or feel free to create a pull request.
+If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny) or feel free to create a pull request.
 
 # Customization
 
