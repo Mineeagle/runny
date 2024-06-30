@@ -91,6 +91,7 @@ You can change some options for runny, or change the keybinding to execute a fil
 - Support more programming languages
 - Implement `> help runny` command
 - Do some more testing
+- Add uninstall / remove option in the `makefile`
 - Key binding for the `runny` command
 
 (This roadmap is in no particular order.)
