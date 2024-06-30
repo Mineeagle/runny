@@ -1,25 +1,6 @@
-# runny
-Runny allows to execute files, such as `.py` files from within Micro. There are two options to run a file:
+# runnyhelp
 
-1. Without arguments
-2. With arguments
-
-Currently, the following programming languages are supported:
-
-- Lua
-- Python
-
-If would like to see an addition to these, please create an issue on GitHub or feel free to create a pull request.
-
-# Installation
-
-In order to install runny - make sure Micro is installed in the first place - simply clone this repository and run `make`:
-
-```bash
-$ git clone https://github.com/Mineeagle/runny.git
-$ cd runny
-$ make
-```
+This document explains how you can use `runny`, a plugin to execute files from within the Micro text editor. Furthermore, it is going to explaine the keybindings, as well as options to configure runny to your liking.
 
 # Usage
 
@@ -64,7 +45,7 @@ Currently, the following programming languages are supported:
 - Lua
 - Python
 
-If would like to see an addition to these, please create an issue on GitHub or feel free to create a pull request.
+If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny.git) or feel free to create a pull request.
 
 # Customization
 
@@ -81,10 +62,3 @@ You can change some options for runny, or change the keybinding to execute a fil
 | Purpose                                    | name for `bindings.json` | Default |
 |--------------------------------------------|--------------------------|---------|
 | Execute the current file without arguments | `lua:runny.gorun`         | Ctrl-F5 |
-
-# Roadmap
-
-# Changelog
-
-1.0.0
-- Initial release
