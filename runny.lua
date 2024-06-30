@@ -17,6 +17,8 @@ INTERPRETER_OPTION_NAME = "runny.interpreter"
 STANDARD_INTERPRETERS = {}
 STANDARD_INTERPRETERS["python"] = "python3"
 STANDARD_INTERPRETERS["lua"] = "lua"
+STANDARD_INTERPRETERS["bash"] = "bash"
+STANDARD_INTERPRETERS["zsh"] = "zsh"
 
 
 -- init function that creates a key binding and the command
@@ -49,6 +51,16 @@ function argrun(bp, args)
         command = _getInterpreter("python") .. " " .. buf.Path .. " " .. arguments
     elseif fileType == "lua" then
         command = _getInterpreter("lua") .. " " .. buf.Path .. " " .. arguments
+    elseif fileType == "shell" then
+        local type =_determineShellType(buf.Path)
+
+        -- check if the shell file is unsupported
+        if type == nil then
+            return
+        end
+
+        -- build the command as usual
+        command = _getInterpreter(type) .. " " .. buf.Path .. " " .. arguments
     else
         return
     end
@@ -74,10 +86,21 @@ function gorun(bp)
     local fileType = buf:FileType()
 
     -- build the command to be executed
+    local command = ""
     if fileType == "python" then
         command = _getInterpreter("python") .. " " .. buf.Path
     elseif fileType == "lua" then
         command = _getInterpreter("lua") .. " " .. buf.Path
+    elseif fileType == "shell" then
+        local type =_determineShellType(buf.Path)
+
+        -- check if the shell file is unsupported
+        if type == nil then
+            return
+        end
+
+        -- build the command as usual
+        command = _getInterpreter(type) .. " " .. buf.Path
     else
         return
     end
@@ -126,4 +149,27 @@ function _getInterpreter(language)
     else
         return option
     end
+end
+
+
+-- helper function that allows to differenciate between different types of shell files
+-- currently it determines whether a file is a bash file or a zsh file
+function _determineShellType(path)
+    local ioutil = import("io/ioutil")
+    local fmt = import("fmt")
+
+    -- read file from path and store contents into resultString
+    local resultString, err = ioutil.ReadFile(path)
+    local fileStr = fmt.Sprintf("%s", resultString)
+
+    -- return the type of script used; nil if no shebang is there
+    local type = nil
+
+    if string.sub(fileStr, 1, string.len("#!/bin/bash")) == "#!/bin/bash" then
+        type = "bash"
+    elseif string.sub(fileStr, 1, string.len("#!/bin/zsh")) == "#!/bin/zsh" then
+        type = "zsh"
+    end
+
+    return type
 end

@@ -8,6 +8,7 @@ Currently, the following programming languages are supported:
 
 - Lua
 - Python
+- Shell (bash & zsh)
 
 If would like to see an addition to these, please create an issue on GitHub or feel free to create a pull request.
 
@@ -63,6 +64,7 @@ Currently, the following programming languages are supported:
 
 - Lua
 - Python
+- Shell (bash & zsh)
 
 If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny) or feel free to create a pull request.
 
@@ -76,6 +78,8 @@ You can change some options for runny, or change the keybinding to execute a fil
 | `runny.terminaltype`      | Type of the terminal that is used to execute the file        | `interactive` | `interactive` or `emulator` |
 | `runny.interpreterpython` | Python interpreter that will be used to execute python files | `python3`     |                             |
 | `runny.interpreterlua`    | Lua interpreter that will be used to execute lua files       | `lua`         |                             |
+| `runny.interpreterbash`   | Bash interpreter that will be used to execute shell files with this shebang `#!/bin/bash` | `bash`     |                             |
+| `runny.interpreterzsh`    | Zsh interpreter that will be used to execute shell files with this shebang `#!/bin/zsh`       | `zsh`         |                             |
 
 ### Keybindings
 | Purpose                                    | name for `bindings.json` | Default |
@@ -92,6 +96,11 @@ You can change some options for runny, or change the keybinding to execute a fil
 (This roadmap is in no particular order.)
 
 # Changelog
+
+1.1.0
+- Add two new supported language for shell scripts:
+    - bash
+    - zsh
 
 1.0.0
 - Initial release
