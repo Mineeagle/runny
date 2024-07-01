@@ -19,6 +19,8 @@ STANDARD_INTERPRETERS["python"] = "python3"
 STANDARD_INTERPRETERS["lua"] = "lua"
 STANDARD_INTERPRETERS["bash"] = "bash"
 STANDARD_INTERPRETERS["zsh"] = "zsh"
+STANDARD_INTERPRETERS["java"] = "java"
+STANDARD_INTERPRETERS["javacompiler"] = "javac"
 
 
 -- init function that creates a key binding and the command
@@ -36,6 +38,7 @@ end
 -- this function is called when the file is to be executed with arguments
 function argrun(bp, args)
     local buf = bp.Buf
+    buf:Save()
     local fileType = buf:FileType()
     local arguments = ""
 
@@ -61,6 +64,17 @@ function argrun(bp, args)
 
         -- build the command as usual
         command = _getInterpreter(type) .. " " .. buf.Path .. " " .. arguments
+    elseif fileType == "java" then
+
+        -- get compiled file path
+        local filePathWithoutExtension = string.sub(buf.Path, 1, string.len(buf.Path) - string.len(".java"))
+        compiledFilePath = filePathWithoutExtension .. ".class"
+
+        -- compile the java file
+        shell.RunCommand(_getInterpreter("javacompiler") .. " " .. buf.Path)
+
+        -- build the command to execute the compiled file
+        command = _getInterpreter("java") .. " " .. filePathWithoutExtension .. " " .. arguments
     else
         return
     end
@@ -83,6 +97,7 @@ end
 -- function that runs the current file; standard key binding is Ctrl-F5
 function gorun(bp)
     local buf = bp.Buf
+    buf:Save()
     local fileType = buf:FileType()
 
     -- build the command to be executed
@@ -101,6 +116,17 @@ function gorun(bp)
 
         -- build the command as usual
         command = _getInterpreter(type) .. " " .. buf.Path
+    elseif fileType == "java" then
+
+        -- get compiled file path
+        local filePathWithoutExtension = string.sub(buf.Path, 1, string.len(buf.Path) - string.len(".java"))
+        compiledFilePath = filePathWithoutExtension .. ".class"
+
+        -- compile the java file
+        shell.RunCommand(_getInterpreter("javacompiler") .. " " .. buf.Path)
+
+        -- build the command to execute the compiled file
+        command = _getInterpreter("java") .. " " .. filePathWithoutExtension
     else
         return
     end
