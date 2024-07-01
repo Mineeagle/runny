@@ -5,8 +5,14 @@
   "Website": "https://github.com/Mineeagle/runny.git",
   "Versions": [
     {
-        "Version": "1.1.0",
+        "Version": "1.2.0",
         "Url": "https://github.com/Mineeagle/runny.git",
+        "Require": {
+          "micro": ">=2.0.13"
+    },
+    {
+        "Version": "1.1.0",
+        "Url": "",
         "Require": {
           "micro": ">=2.0.13"
     },
