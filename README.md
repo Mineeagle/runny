@@ -93,6 +93,7 @@ You can change some options for runny, or change the keybinding to execute a fil
 - Do some more testing (especially using `zsh` files)
 - Add uninstall / remove option in the `makefile`
 - Key binding for the `runny` command
+- Save file upon execution
 
 (This roadmap is in no particular order.)
 
