@@ -45,6 +45,7 @@ Currently, the following programming languages are supported:
 - Lua
 - Python
 - Shell (bash & zsh)
+- Java
 
 If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny) or feel free to create a pull request.
 
@@ -53,15 +54,17 @@ If would like to see an addition to these, please create an issue on [GitHub](ht
 You can change some options for runny, or change the keybinding to execute a file:
 
 ### Options
-| Option                    | Pupose                                                       | Default       | Accepted values             |
-|---------------------------|--------------------------------------------------------------|---------------|-----------------------------|
-| `runny.terminaltype`      | Type of the terminal that is used to execute the file        | `interactive` | `interactive` or `emulator` |
-| `runny.interpreterpython` | Python interpreter that will be used to execute python files | `python3`     |                             |
-| `runny.interpreterlua`    | Lua interpreter that will be used to execute lua files       | `lua`         |                             |
-| `runny.interpreterbash`   | Bash interpreter that will be used to execute shell files with this shebang `#!/bin/bash` | `bash`     |                             |
-| `runny.interpreterzsh`    | Zsh interpreter that will be used to execute shell files with this shebang `#!/bin/zsh`       | `zsh`         |                             |
+| Option                          | Pupose                                                                                    | Default       | Accepted values             |
+|---------------------------------|-------------------------------------------------------------------------------------------|---------------|-----------------------------|
+| `runny.terminaltype`            | Type of the terminal that is used to execute the file                                     | `interactive` | `interactive` or `emulator` |
+| `runny.interpreterpython`       | Python interpreter that will be used to execute python files                              | `python3`     |                             |
+| `runny.interpreterlua`          | Lua interpreter that will be used to execute lua files                                    | `lua`         |                             |
+| `runny.interpreterbash`         | Bash interpreter that will be used to execute shell files with this shebang `#!/bin/bash` | `bash`        |                             |
+| `runny.interpreterzsh`          | Zsh interpreter that will be used to execute shell files with this shebang `#!/bin/zsh`   | `zsh`         |                             |
+| `runny.interpreterjava`         | Java executable that will be used to execute compiled java files                          | `java`        |                             |
+| `runny.interpreterjavacompiler` | Java compiler                                                                             | `javac`       |                             |
 
 ### Keybindings
 | Purpose                                    | name for `bindings.json` | Default |
 |--------------------------------------------|--------------------------|---------|
-| Execute the current file without arguments | `lua:runny.gorun`         | Ctrl-F5 |
+| Execute the current file without arguments | `lua:runny.gorun`        | Ctrl-F5 |
