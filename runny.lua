@@ -3,7 +3,7 @@ micro = import("micro")
 config = import("micro/config")
 shell = import("micro/shell")
 
--- Specify the temrinal type [interactive/emulator]
+-- Specify the terminal type [interactive/emulator]
 TERMINAL_TYPE_OPTION_NAME = "runny.terminaltype"
 
 -- This is used to define an interpreter for a specific language.
