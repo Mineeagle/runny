@@ -25,6 +25,7 @@ STANDARD_INTERPRETERS["zsh"] = "zsh"
 STANDARD_INTERPRETERS["java"] = "java"
 STANDARD_INTERPRETERS["javacompiler"] = "javac"
 STANDARD_INTERPRETERS["go"] = "go run"
+STANDARD_INTERPRETERS["brainfuq"] = "python3 brainfuqinterpreter.py"
 
 
 -- init function that creates a key binding and the command
@@ -84,6 +85,8 @@ function argrun(bp, args)
 
         -- build the command to execute the compiled file
         command = _getInterpreter("java") .. " " .. filePathWithoutExtension .. " " .. arguments
+    elseif _endsWith(fileName, ".bf") then
+        command = _getInterpreter("brainfuq") .. " " .. buf.path
     else
         return
     end
@@ -141,6 +144,8 @@ function gorun(bp)
 
         -- build the command to execute the compiled file
         command = _getInterpreter("java") .. " " .. filePathWithoutExtension
+    elseif _endsWith(fileName, ".bf") then
+        command = _getInterpreter("brainfuq") .. " " .. buf.path
     else
         return
     end
