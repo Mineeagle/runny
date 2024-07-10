@@ -110,6 +110,11 @@ You can change some options for runny, or change the keybinding to execute a fil
 
 # Changelog
 
+1.4.0
+- Add two new languages
+    - Brainfuq support, using a python interpreter
+    - Markdown
+
 1.3.0
 - Add [runnyhelp](./help/runnyhelp.md) as a help document; accessible using `> help runnyhelp`
 - Go is now supported support
