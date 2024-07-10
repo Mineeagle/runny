@@ -104,6 +104,7 @@ You can change some options for runny, or change the keybinding to execute a fil
 
 - Support more programming languages
 - Do some more testing (especially using `zsh` files)
+- Add a way to update runny
 
 (This roadmap is in no particular order.)
 
