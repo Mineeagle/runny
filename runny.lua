@@ -27,6 +27,7 @@ STANDARD_INTERPRETERS["java"] = "java"
 STANDARD_INTERPRETERS["javacompiler"] = "javac"
 STANDARD_INTERPRETERS["go"] = "go run"
 STANDARD_INTERPRETERS["brainfuq"] = "python3 brainfuqinterpreter.py"
+STANDARD_INTERPRETERS["markdown"] = "glow -s dark"
 
 
 -- init function that creates a key binding and the command
@@ -88,6 +89,10 @@ function argrun(bp, args)
         command = _getInterpreter("java") .. " " .. filePathWithoutExtension .. " " .. arguments
     elseif _endsWith(fileName, ".bf") then
         command = _getInterpreter("brainfuq") .. " " .. buf.path
+    elseif fileType == "markdown" then
+        command = _getInterpreter("markdown") .. " " .. buf.path
+        shell.RunInteractiveShell(command, true, false)
+        return
     else
         micro.InfoBar():Message("The file '" .. fileName .. "' cannot be executed using runny; the detected file format is '" .. fileType .. "' which is not supported [yet].")
         return
@@ -148,6 +153,10 @@ function gorun(bp)
         command = _getInterpreter("java") .. " " .. filePathWithoutExtension
     elseif _endsWith(fileName, ".bf") then
         command = _getInterpreter("brainfuq") .. " " .. buf.path
+    elseif fileType == "markdown" then
+        command = _getInterpreter("markdown") .. " " .. buf.path
+        shell.RunInteractiveShell(command, true, false)
+        return
     else
         micro.InfoBar():Message("The file '" .. fileName .. "' cannot be executed using runny; the detected file format is '" .. fileType .. "' which is not supported [yet].")
         return
