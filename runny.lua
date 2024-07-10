@@ -3,6 +3,9 @@ micro = import("micro")
 config = import("micro/config")
 shell = import("micro/shell")
 
+-- Add the runny help file
+config.AddRuntimeFile("runny", config.RTHelp, "help/runnyhelp.md")
+
 -- Specify the terminal type [interactive/emulator]
 TERMINAL_TYPE_OPTION_NAME = "runny.terminaltype"
 
@@ -21,11 +24,13 @@ STANDARD_INTERPRETERS["bash"] = "bash"
 STANDARD_INTERPRETERS["zsh"] = "zsh"
 STANDARD_INTERPRETERS["java"] = "java"
 STANDARD_INTERPRETERS["javacompiler"] = "javac"
+STANDARD_INTERPRETERS["go"] = "go run"
 
 
 -- init function that creates a key binding and the command
 function init()
     config.TryBindKey("Ctrl-F5", "lua:runny.gorun", true)
+    config.TryBindKey("F5", "command-edit:runny ", true)
     config.MakeCommand("runny", argrun, NoComplete)
 end
 
@@ -53,7 +58,9 @@ function argrun(bp, args)
     if fileType == "python" then
         command = _getInterpreter("python") .. " " .. buf.Path .. " " .. arguments
     elseif fileType == "lua" then
-        command = _getInterpreter("lua") .. " " .. buf.Path .. " " .. arguments
+        command = _getInterpreter("lua") .. " " .. buf.Path .. " " .. argument
+    elseif fileType == "go" then
+        command = _getInterpreter("go") .. " " .. buf.Path .. " " .. arguments
     elseif fileType == "shell" then
         local type =_determineShellType(buf.Path)
 
@@ -94,6 +101,7 @@ end
 -- gorun function --
 ---------------------
 
+
 -- function that runs the current file; standard key binding is Ctrl-F5
 function gorun(bp)
     local buf = bp.Buf
@@ -106,6 +114,8 @@ function gorun(bp)
         command = _getInterpreter("python") .. " " .. buf.Path
     elseif fileType == "lua" then
         command = _getInterpreter("lua") .. " " .. buf.Path
+    elseif fileType == "go" then
+        command = _getInterpreter("go") .. " " .. buf.Path
     elseif fileType == "shell" then
         local type =_determineShellType(buf.Path)
 
