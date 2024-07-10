@@ -10,6 +10,8 @@ Runny allows to execute files, such as `.py` files from within Micro. There are 
 
 Please have a look at the [currently supported files](#supported-file-types) to ensure that runny currently supports your file type.
 
+At any time, you can type `> help runnyhelp` to see the runny help file on how to use runny.
+
 ## Execution without arguments
 
 In order to execute a file, open the file in Micro, set your cursor onto it, and press `Ctrl+F5`. This keybinding can be changed in the `bindings.json` file by specifying an entry named `lua:runny.gorun`.
@@ -24,13 +26,15 @@ It may look like this:
 
 ## Execution with arguments
 
-In order to execute the file with arguments, open the file in Micro, set the cursor to it, and then type the following command:
+In order to execute the file with arguments, open the file in Micro, set the cursor to it, and then type the following command.
 
 ```
 > runny <arg1> <arg2> ... <argN>
 ```
 
-Replace the args with the arguments you want to pass through. It may look like this:
+(Alternatively, you can also just press `F5`, and the command prompt will open, ready to take your input.)
+
+Replace the `<args>` with the arguments you want to pass through. It may look like this:
 
 ```
 > runny hello world!
@@ -46,6 +50,7 @@ Currently, the following programming languages are supported:
 - Python
 - Shell (bash & zsh)
 - Java
+- Go
 
 If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny) or feel free to create a pull request.
 
@@ -54,6 +59,7 @@ If would like to see an addition to these, please create an issue on [GitHub](ht
 You can change some options for runny, or change the keybinding to execute a file:
 
 ### Options
+
 | Option                          | Pupose                                                                                    | Default       | Accepted values             |
 |---------------------------------|-------------------------------------------------------------------------------------------|---------------|-----------------------------|
 | `runny.terminaltype`            | Type of the terminal that is used to execute the file                                     | `interactive` | `interactive` or `emulator` |
@@ -63,8 +69,11 @@ You can change some options for runny, or change the keybinding to execute a fil
 | `runny.interpreterzsh`          | Zsh interpreter that will be used to execute shell files with this shebang `#!/bin/zsh`   | `zsh`         |                             |
 | `runny.interpreterjava`         | Java executable that will be used to execute compiled java files                          | `java`        |                             |
 | `runny.interpreterjavacompiler` | Java compiler                                                                             | `javac`       |                             |
+| `runny.interpretergo`           | Go interpreter that will be used to execute go files                                      | `go run`      |                             |
 
 ### Keybindings
-| Purpose                                    | name for `bindings.json` | Default |
-|--------------------------------------------|--------------------------|---------|
-| Execute the current file without arguments | `lua:runny.gorun`        | Ctrl-F5 |
+
+| Purpose                                                           | name for `bindings.json` | Default |
+|-------------------------------------------------------------------|--------------------------|---------|
+| Execute the current file without arguments                        | `lua:runny.gorun`        | Ctrl-F5 |
+| Open the command line with `runny ` pre-typed to accept arguments | `command-edit:runny`     | F5      |
