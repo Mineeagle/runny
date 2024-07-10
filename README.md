@@ -133,7 +133,7 @@ git clone https://github.com/Mineeagle/runny && cd runny && make update && cd ..
 - Add two new languages
     - Brainfuq support, using a python interpreter that ships with runny
     - Markdown
-- Show a message when a file cannot be executed
+- Show a message when a file [type] is not supported
 - Add update instructions and an update option to the [makefile](./makefile)
 
 1.3.0
