@@ -114,6 +114,7 @@ You can change some options for runny, or change the keybinding to execute a fil
 - Add two new languages
     - Brainfuq support, using a python interpreter
     - Markdown
+- Show a message when a file cannot be executed
 
 1.3.0
 - Add [runnyhelp](./help/runnyhelp.md) as a help document; accessible using `> help runnyhelp`

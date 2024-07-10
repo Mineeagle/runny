@@ -2,6 +2,7 @@
 micro = import("micro")
 config = import("micro/config")
 shell = import("micro/shell")
+display = import("micro/display")
 
 -- Add the runny help file
 config.AddRuntimeFile("runny", config.RTHelp, "help/runnyhelp.md")
@@ -88,6 +89,7 @@ function argrun(bp, args)
     elseif _endsWith(fileName, ".bf") then
         command = _getInterpreter("brainfuq") .. " " .. buf.path
     else
+        micro.InfoBar():Message("The file '" .. fileName .. "' cannot be executed using runny; the detected file format is '" .. fileType .. "' which is not supported [yet].")
         return
     end
 
@@ -147,6 +149,7 @@ function gorun(bp)
     elseif _endsWith(fileName, ".bf") then
         command = _getInterpreter("brainfuq") .. " " .. buf.path
     else
+        micro.InfoBar():Message("The file '" .. fileName .. "' cannot be executed using runny; the detected file format is '" .. fileType .. "' which is not supported [yet].")
         return
     end
 
