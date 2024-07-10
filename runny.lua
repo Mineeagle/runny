@@ -2,6 +2,7 @@
 micro = import("micro")
 config = import("micro/config")
 shell = import("micro/shell")
+display = import("micro/display")
 
 -- Add the runny help file
 config.AddRuntimeFile("runny", config.RTHelp, "help/runnyhelp.md")
@@ -25,6 +26,8 @@ STANDARD_INTERPRETERS["zsh"] = "zsh"
 STANDARD_INTERPRETERS["java"] = "java"
 STANDARD_INTERPRETERS["javacompiler"] = "javac"
 STANDARD_INTERPRETERS["go"] = "go run"
+STANDARD_INTERPRETERS["brainfuq"] = "python3 brainfuqinterpreter.py"
+STANDARD_INTERPRETERS["markdown"] = "glow -s dark"
 
 
 -- init function that creates a key binding and the command
@@ -44,7 +47,9 @@ end
 function argrun(bp, args)
     local buf = bp.Buf
     buf:Save()
+
     local fileType = buf:FileType()
+    local fileName = buf:GetName()
     local arguments = ""
 
     -- get the users arguments
@@ -82,7 +87,14 @@ function argrun(bp, args)
 
         -- build the command to execute the compiled file
         command = _getInterpreter("java") .. " " .. filePathWithoutExtension .. " " .. arguments
+    elseif _endsWith(fileName, ".bf") then
+        command = _getInterpreter("brainfuq") .. " " .. buf.path
+    elseif fileType == "markdown" then
+        command = _getInterpreter("markdown") .. " " .. buf.path
+        shell.RunInteractiveShell(command, true, false)
+        return
     else
+        micro.InfoBar():Message("The file '" .. fileName .. "' cannot be executed using runny; the detected file format is '" .. fileType .. "' which is not supported [yet].")
         return
     end
 
@@ -106,7 +118,9 @@ end
 function gorun(bp)
     local buf = bp.Buf
     buf:Save()
+
     local fileType = buf:FileType()
+    local fileName = buf:GetName()
 
     -- build the command to be executed
     local command = ""
@@ -137,7 +151,14 @@ function gorun(bp)
 
         -- build the command to execute the compiled file
         command = _getInterpreter("java") .. " " .. filePathWithoutExtension
+    elseif _endsWith(fileName, ".bf") then
+        command = _getInterpreter("brainfuq") .. " " .. buf.path
+    elseif fileType == "markdown" then
+        command = _getInterpreter("markdown") .. " " .. buf.path
+        shell.RunInteractiveShell(command, true, false)
+        return
     else
+        micro.InfoBar():Message("The file '" .. fileName .. "' cannot be executed using runny; the detected file format is '" .. fileType .. "' which is not supported [yet].")
         return
     end
 
@@ -208,4 +229,10 @@ function _determineShellType(path)
     end
 
     return type
+end
+
+
+-- Helper function to get the check whether a string ends with a certain string
+function _endsWith(str, ending)
+    return ending == "" or str:sub(-#ending) == ending
 end
