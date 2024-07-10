@@ -5,5 +5,6 @@ install:
 	cp help/runnyhelp.md ~/.config/micro/plug/runny/help/runnyhelp.md
 	cp brainfuqinterpreter.py ~/.config/micro/plug/runny/brainfuqinterpreter.py
 
+
 uninstall:
 	rm -r ~/.config/micro/plug/runny
