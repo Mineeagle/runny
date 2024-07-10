@@ -44,7 +44,9 @@ end
 function argrun(bp, args)
     local buf = bp.Buf
     buf:Save()
+
     local fileType = buf:FileType()
+    local fileName = buf:GetName()
     local arguments = ""
 
     -- get the users arguments
@@ -106,7 +108,9 @@ end
 function gorun(bp)
     local buf = bp.Buf
     buf:Save()
+
     local fileType = buf:FileType()
+    local fileName = buf:GetName()
 
     -- build the command to be executed
     local command = ""
@@ -208,4 +212,10 @@ function _determineShellType(path)
     end
 
     return type
+end
+
+
+-- Helper function to get the check whether a string ends with a certain string
+function _endsWith(str, ending)
+    return ending == "" or str:sub(-#ending) == ending
 end
