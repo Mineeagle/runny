@@ -138,8 +138,8 @@ git clone https://github.com/Mineeagle/runny && cd runny && make update && cd ..
 
 1.3.0
 - Add [runnyhelp](./help/runnyhelp.md) as a help document; accessible using `> help runnyhelp`
-- Go is now supported support
-- Shortcut to run files with arguments using F5
+- Go is now supported
+- Shortcut to run files with arguments using `F5`
 
 1.2.0
 - Add Java support
