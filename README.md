@@ -124,6 +124,13 @@ git clone https://github.com/Mineeagle/runny && cd runny && make update && cd ..
 
 - Support more languages (eg. .bat (batch) files)
 - Do some more testing (especially using `zsh` files)
+- Bugfix if the runny command does not recieve any arguments:
+    ```lua
+    if arguments == "" then
+        micro.InfoBar():Message("No arguments have been specified.")
+        return
+    end
+    ```
 
 (This roadmap is in no particular order.)
 
