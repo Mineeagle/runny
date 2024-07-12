@@ -1,5 +1,5 @@
 # runny
-Runny allows to execute files, such as `.py` files from within Micro. There are two options to run a file:
+Runny allows to execute files, such as `.py` files from within the [Micro](https://micro-editor.github.io/) text editor. There are two options to run a file:
 
 1. Without arguments
 2. With arguments
