@@ -58,6 +58,11 @@ function argrun(bp, args)
         arguments = arguments .. " " .. args[index]
         index = index + 1
     end
+    --- return if no arguments have been specified
+    if arguments == "" then
+        micro.InfoBar():Message("No arguments have been specified.")
+        return
+    end
 
     -- similiar to gorun; build the command to be executed
     if fileType == "python" then
