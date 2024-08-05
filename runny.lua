@@ -81,6 +81,8 @@ function argrun(bp, args)
 
         -- build the command as usual
         command = _getInterpreter(type) .. " " .. buf.Path .. " " .. arguments
+    elseif fileType == "bat" then
+        command = "./" .. buf.Path .. " " .. arguments
     elseif fileType == "java" then
 
         -- get compiled file path
@@ -145,6 +147,8 @@ function gorun(bp)
 
         -- build the command as usual
         command = _getInterpreter(type) .. " " .. buf.Path
+    elseif fileType == "bat" then
+        command = "./" .. buf.Path
     elseif fileType == "java" then
 
         -- get compiled file path
