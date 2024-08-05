@@ -28,6 +28,7 @@ STANDARD_INTERPRETERS["javacompiler"] = "javac"
 STANDARD_INTERPRETERS["go"] = "go run"
 STANDARD_INTERPRETERS["brainfuq"] = "python3 brainfuqinterpreter.py"
 STANDARD_INTERPRETERS["markdown"] = "glow -s dark"
+STANDARD_INTERPRETERS["ccompiler"] = "gcc"
 
 
 -- init function that creates a key binding and the command
@@ -81,17 +82,28 @@ function argrun(bp, args)
 
         -- build the command as usual
         command = _getInterpreter(type) .. " " .. buf.Path .. " " .. arguments
+    elseif fileType == "batch" then
+        command = "./" .. buf.Path .. " " .. arguments
     elseif fileType == "java" then
 
         -- get compiled file path
         local filePathWithoutExtension = string.sub(buf.Path, 1, string.len(buf.Path) - string.len(".java"))
-        compiledFilePath = filePathWithoutExtension .. ".class"
 
         -- compile the java file
         shell.RunCommand(_getInterpreter("javacompiler") .. " " .. buf.Path)
 
         -- build the command to execute the compiled file
         command = _getInterpreter("java") .. " " .. filePathWithoutExtension .. " " .. arguments
+    elseif fileType == "c" then
+        -- get compiled file path
+        local filePathWithoutExtension = string.sub(buf.Path, 1, string.len(buf.Path) - string.len(".c"))
+        compiledFilePath = filePathWithoutExtension .. ".out"
+
+        -- compile file
+        shell.RunCommand(_getInterpreter("ccompiler") .. " " .. buf.Path)
+
+        -- build command
+        command = "./a.out" .. " " .. arguments
     elseif _endsWith(fileName, ".bf") then
         command = _getInterpreter("brainfuq") .. " " .. buf.path
     elseif fileType == "markdown" then
@@ -145,11 +157,22 @@ function gorun(bp)
 
         -- build the command as usual
         command = _getInterpreter(type) .. " " .. buf.Path
+    elseif fileType == "batch" then
+        command = "./" .. buf.Path
+    elseif fileType == "c" then
+        -- get compiled file path
+        local filePathWithoutExtension = string.sub(buf.Path, 1, string.len(buf.Path) - string.len(".c"))
+        compiledFilePath = filePathWithoutExtension .. ".out"
+
+        -- compile file
+        shell.RunCommand(_getInterpreter("ccompiler") .. " " .. buf.Path)
+
+        -- build command
+        command = "./a.out"
     elseif fileType == "java" then
 
         -- get compiled file path
         local filePathWithoutExtension = string.sub(buf.Path, 1, string.len(buf.Path) - string.len(".java"))
-        compiledFilePath = filePathWithoutExtension .. ".class"
 
         -- compile the java file
         shell.RunCommand(_getInterpreter("javacompiler") .. " " .. buf.Path)

@@ -53,6 +53,8 @@ Currently, the following languages are supported:
 - Go
 - Markdown
 - Brainfuck
+- C
+- batch files
 
 If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny) or feel free to create a pull request.
 
@@ -74,6 +76,7 @@ You can change some options for runny, or change the keybinding to execute a fil
 | `runny.interpretergo`           | Go interpreter that will be used to execute go files                                                   | `go run`                                                               |                             |
 | `runny.interpreterbrainfuq`     | Brainfuck interpreter that will be used to execute `.bf` files                                         | `python3 brainfuqinterpreter.py` (runny comes with an interpreter ;) ) |                             |
 | `runny.interpretermarkdown`     | Markdown viewer that is used to display a pretty version of the markdown file in the interactive shell | `glow -s dark`                                                         |                             |
+| `runny.ccompiler`| Compiler used to compile C files|`gcc`||
 
 ### Keybindings
 
