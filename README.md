@@ -122,7 +122,7 @@ git clone https://github.com/Mineeagle/runny && cd runny && make update && cd ..
 
 # Roadmap
 
-- Support more languages (eg. .bat (batch) files)
+- Support more languages (eg. .bat (batch) files, or C)
 - Do some more testing (especially using `zsh` files)
 
 (This roadmap is in no particular order.)
