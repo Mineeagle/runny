@@ -102,6 +102,7 @@ You can change some options for runny, or change the keybinding to execute a fil
 | `runny.interpretergo`           | Go interpreter that will be used to execute go files                                                   | `go run`                                                               |                             |
 | `runny.interpreterbrainfuq`     | Brainfuck interpreter that will be used to execute `.bf` files                                         | `python3 brainfuqinterpreter.py` (runny comes with an interpreter ;) ) |                             |
 | `runny.interpretermarkdown`     | Markdown viewer that is used to display a pretty version of the markdown file in the interactive shell | `glow -s dark`                                                         |                             |
+| `runny.ccompiler`| Compiler used to compile C files|`gcc`||
 
 ### Keybindings
 
@@ -127,14 +128,15 @@ git clone https://github.com/Mineeagle/runny && cd runny && make update && cd ..
 # Roadmap
 
 - Support more languages
-- Do some more testing (especially using `zsh` files)
+- Do some more testing (especially using zsh, Java, C and bat)
+- Implement clean-up of compiled files for Java and C
 
 (This roadmap is in no particular order.)
 
 # Changelog
 
 1.5.0
-- Add C and bat support
+- Add C and batch file support
 
 1.4.1
 - Bug fix; runny did crash when no arguments were specified when trying to execute `> runny`
