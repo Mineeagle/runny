@@ -13,6 +13,8 @@ Currently, the following languages are supported:
 - Go
 - Markdown
 - Brainfuck
+- C
+- batch files
 
 If would like to see an addition to these, please create an issue on GitHub or feel free to create a pull request.
 
@@ -77,6 +79,8 @@ Currently, the following languages are supported:
 - Go
 - Markdown
 - Brainfuck
+- C
+- batch files
 
 If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny) or feel free to create a pull request.
 
@@ -122,12 +126,15 @@ git clone https://github.com/Mineeagle/runny && cd runny && make update && cd ..
 
 # Roadmap
 
-- Support more languages (eg. .bat (batch) files, or C)
+- Support more languages
 - Do some more testing (especially using `zsh` files)
 
 (This roadmap is in no particular order.)
 
 # Changelog
+
+1.5.0
+- Add C and bat support
 
 1.4.1
 - Bug fix; runny did crash when no arguments were specified when trying to execute `> runny`

@@ -53,6 +53,8 @@ Currently, the following languages are supported:
 - Go
 - Markdown
 - Brainfuck
+- C
+- batch files
 
 If would like to see an addition to these, please create an issue on [GitHub](https://github.com/Mineeagle/runny) or feel free to create a pull request.
 
