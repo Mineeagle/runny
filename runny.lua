@@ -100,7 +100,7 @@ function argrun(bp, args)
         compiledFilePath = filePathWithoutExtension .. ".out"
 
         -- compile file
-        shell.RunCommand(_getInterpreter("ccompiler") .. " " .. buf.Path)
+        shell.RunCommand(_getInterpreter("ccompiler") .. " " .. buf.Path .. " -lm")
 
         -- build command
         command = "./a.out" .. " " .. arguments
@@ -165,7 +165,7 @@ function gorun(bp)
         compiledFilePath = filePathWithoutExtension .. ".out"
 
         -- compile file
-        shell.RunCommand(_getInterpreter("ccompiler") .. " " .. buf.Path)
+        shell.RunCommand(_getInterpreter("ccompiler") .. " " .. buf.Path .. " -lm")
 
         -- build command
         command = "./a.out"
